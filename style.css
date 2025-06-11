@@ -1,0 +1,239 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0; padding: 0;
+  background: #fafafa;
+}
+
+.header {
+  background: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header__actions button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  width: 200px;
+  text-align: center;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.product-card__add-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.product-card__add-btn:hover {
+  background: #0056b3;
+} 
+
+.cart-panel {
+  position: fixed;
+  top: 0; right: 0;
+  width: 320px;
+  height: 100vh;
+  background: white;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  padding: 1rem;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.cart-panel.active {
+  transform: translateX(0);
+}
+
+.cart-panel__close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  float: right;
+  color: #333;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0;
+  gap: 0.5rem;
+}
+
+.cart-item-name {
+  flex: 1 1 50%;
+  font-weight: 600;
+  color: #333;
+}
+
+.cart-item-qty {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0 0.3rem;
+  background: #f9f9f9;
+}
+
+.qty-btn {
+  background: #007bff;
+  border: none;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+.qty-btn:hover {
+  background-color: #0056b3;
+}
+
+.qty-number {
+  min-width: 20px;
+  text-align: center;
+  font-weight: 600;
+  color: #222;
+}
+
+.cart-item-price {
+  min-width: 70px;
+  text-align: right;
+  font-weight: 700;
+  color: #007bff;
+}
+
+.profile-panel {
+  position: fixed;
+  top: 0; left: 0;
+  width: 300px;
+  height: 100vh;
+  background: #fff;
+  padding: 1rem;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  z-index: 1000;
+  border-radius: 0 6px 6px 0;
+}
+
+.profile-panel.active {
+  transform: translateX(0);
+}
+
+.user-info p {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.user-info button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+  background: #dc3545;
+  color: white;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.user-info button:hover {
+  background: #b02a37;
+}
+
+/* Formulario Login y Registro */
+.auth-forms {
+  margin-top: 1rem;
+}
+
+.auth-forms form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.auth-forms label {
+  font-weight: 600;
+  color: #333;
+}
+
+.auth-forms input {
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.auth-forms button {
+  padding: 0.5rem;
+  border: none;
+  background: #007bff;
+  color: white;
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-forms button:hover {
+  background: #0056b3;
+}
+
+.auth-toggle {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #007bff;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: underline;
+}
+
+.auth-error {
+  color: #dc3545;
+  font-weight: 700;
+  margin-top: 0.3rem;
+}
+
+/* Scrollbar para paneles */
+.cart-panel::-webkit-scrollbar,
+.profile-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cart-panel::-webkit-scrollbar-thumb,
+.profile-panel::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 4px;
+}

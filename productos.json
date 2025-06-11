@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "Jeans Clásicos", "price": 1500 },
+  { "id": 2, "name": "Camisa Casual", "price": 1200 },
+  { "id": 3, "name": "Campera de Jean", "price": 2800 }
+]

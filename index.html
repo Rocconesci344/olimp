@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tienda con Carrito y Perfil Realista</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1 class="header__title">Tienda Demo</h1>
+    <div class="header__actions">
+      <button id="profile-btn" class="btn-profile" aria-label="Abrir perfil">👤</button>
+      <button id="cart-btn" class="btn-cart" aria-label="Abrir carrito">
+        🛒 <span id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="product-list" class="product-list"></section>
+  </main>
+
+  <aside id="cart-panel" class="cart-panel" aria-label="Carrito de compras">
+    <button id="close-cart" class="cart-panel__close" aria-label="Cerrar carrito">✖</button>
+    <h2>Tu Carrito</h2>
+    <div id="cart-items" class="cart-items"></div>
+    <p>Total: $<span id="cart-total">0</span></p>
+  </aside>
+
+  <aside id="profile-panel" class="profile-panel" aria-label="Panel de perfil"></aside>
+
+  <script src="app.js"></script>
+</body>
+</html>
