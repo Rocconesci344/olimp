@@ -209,6 +209,7 @@ function renderUserInfo() {
       cart = [];
       renderUserInfo();
       renderCart();
+      updateCartCount();
     });
   } else {
     renderAuthForms();
@@ -281,6 +282,7 @@ function renderAuthForms() {
     cart = loadCartForUser(user.email);
     renderUserInfo();
     renderCart();
+    updateCartCount();
   });
 
   // Registro submit
@@ -311,6 +313,7 @@ function renderAuthForms() {
     cart = [];
     renderUserInfo();
     renderCart();
+    updateCartCount();
   });
 }
 
@@ -356,4 +359,5 @@ profileBtn.addEventListener("click", () => {
   renderProducts();
   renderUserInfo();
   renderCart();
+  updateCartCount();
 })();
