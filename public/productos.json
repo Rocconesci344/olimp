@@ -1,5 +1,122 @@
 [
-  { "id": 1, "name": "Jeans Clásicos", "price": 1500 },
-  { "id": 2, "name": "Camisa Casual", "price": 1200 },
-  { "id": 3, "name": "Campera de Jean", "price": 2800 }
+  {
+    "id": 1,
+    "name": "Playas del Nordeste Brasileño",
+    "price": 142000,
+    "description": "7 noches en Porto de Galinhas, con vuelo desde Buenos Aires, hotel frente al mar con desayuno, traslados y excursión a piscinas naturales.",
+    "image": "../img/playasbrasil_1.jpg",
+    "tipo": "internacional"
+  },
+  {
+    "id": 2,
+    "name": "Mar del Plata Clásico",
+    "price": 58000,
+    "description": "Paquete de 4 noches en Mar del Plata con hotel céntrico, desayuno, city tour costero, entrada al teatro y excursión a Sierra de los Padres.",
+    "image": "../img/mdp_2.jpg",
+    "tipo": "nacional"
+  },
+  {
+    "id": 3,
+    "name": "Colonia y Montevideo Express",
+    "price": 68000,
+    "description": "3 noches en Uruguay, con ferry desde Buenos Aires, alojamiento en Colonia y Montevideo, city tours en ambas ciudades y traslados entre destinos incluidos.",
+    "image": "../img/montevideo_3.jpg",
+    "tipo": "internacional"
+  },
+  {
+    "id": 4,
+    "name": "Tour por el Caribe Mexicano",
+    "price": 175000,
+    "description": "5 noches en Cancún con all inclusive, visita a Tulum y Chichén Itzá, vuelo desde Ezeiza, traslados y seguro médico.",
+    "image": "../img/caribemexicano-4.jpg",
+    "tipo": "internacional"
+  },
+  {
+    "id": 5,
+    "name": "Escapada a la Patagonia",
+    "price": 85000,
+    "description": "Incluye 4 noches en El Calafate en hotel 3 estrellas con desayuno, excursión completa al Glaciar Perito Moreno, traslados desde el aeropuerto y guía bilingüe.",
+    "image": "../img/patagonia_5.jpeg",
+    "tipo": "nacional"
+  },
+  {
+    "id": 6,
+    "name": "Ciudades Europeas: París y Roma",
+    "price": 320000,
+    "description": "10 noches en Europa con vuelos, 5 días en París y 5 en Roma, hoteles 3 estrellas con desayuno, traslados, city tours y entradas a museos incluidos.",
+    "image": "../img/paris_6.jpg",
+    "tipo": "internacional"
+  },
+  {
+    "id": 7,
+    "name": "Aventura en Mendoza",
+    "price": 89000,
+    "description": "Incluye 5 días en Mendoza, visita a bodegas con degustación, excursión a Alta Montaña (Puente del Inca y Cristo Redentor) y alojamiento en hotel 4 estrellas.",
+    "image": "../img/mendoza_7.jpeg",
+    "tipo": "nacional"
+  },
+  {
+    "id": 8,
+    "name": "Nueva York Total",
+    "price": 310000,
+    "description": "7 días en Manhattan con vuelos desde Buenos Aires, alojamiento céntrico, visitas a museos, crucero nocturno y entradas a observatorios.",
+    "image": "../img/newyork_8.webp",
+    "tipo": "internacional"
+  },
+  {
+    "id": 9,
+    "name": "Relax en Bariloche",
+    "price": 98000,
+    "description": "5 días en Bariloche con hospedaje frente al Lago Nahuel Huapi, desayuno buffet, city tour, excursión al Cerro Campanario y Circuito Chico con guía.",
+    "image": "../img/bariloche_9.webp",
+    "tipo": "nacional"
+  },
+  {
+    "id": 10,
+    "name": "Cultura en Salta y Jujuy",
+    "price": 93000,
+    "description": "Tour de 6 días por el norte argentino, con alojamiento en Salta y Purmamarca, visitas guiadas a la Quebrada de Humahuaca, Salinas Grandes y City Tour por Salta.",
+    "image": "../img/salta_10.png",
+    "tipo": "nacional"
+  },
+  {
+    "id": 11,
+    "name": "Dubai y el Desierto",
+    "price": 340000,
+    "description": "Paquete de lujo con 5 noches en Dubái, safari en el desierto, crucero con cena, entrada al Burj Khalifa y vuelos incluidos desde Ezeiza.",
+    "image": "../img/dubai_11.jpg",
+    "tipo": "internacional"
+  },
+  {
+    "id": 12,
+    "name": "Aventura en Cataratas",
+    "price": 72000,
+    "description": "Paquete de 3 noches en Puerto Iguazú en hotel con pileta, entradas al Parque Nacional Iguazú (lado argentino), paseo en lancha por el río y traslados incluidos.",
+    "image": "../img/cataratas_12.jpeg",
+    "tipo": "nacional"
+  },
+  {
+    "id": 13,
+    "name": "Iruya y Tilcara Auténticos",
+    "price": 84000,
+    "description": "Viaje de 5 días por el corazón de la Quebrada, con hospedaje en Tilcara e Iruya, excursiones a pueblos originarios, senderismo y gastronomía regional incluida.",
+    "image": "../img/tilcara_13.webp",
+    "tipo": "nacional"
+  },
+  {
+    "id": 14,
+    "name": "Ushuaia, Fin del Mundo",
+    "price": 112000,
+    "description": "6 días en Ushuaia, alojamiento con desayuno, excursión al Parque Nacional Tierra del Fuego, navegación por el Canal Beagle y paseo en el Tren del Fin del Mundo.",
+    "image": "../img/ushuaia_14.jpeg",
+    "tipo": "nacional"
+  },
+  {
+    "id": 15,
+    "name": "Descanso en Villa La Angostura",
+    "price": 95000,
+    "description": "4 noches en lodge de montaña con vista al lago, desayuno artesanal, paseo en catamarán por el Lago Nahuel Huapi y trekking guiado por el Bosque de Arrayanes.",
+    "image": "../img/angostura_15.webp",
+    "tipo": "nacional"
+  }
 ]

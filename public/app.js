@@ -87,6 +87,7 @@ function renderProducts() {
     div.className = "product-card";
     div.innerHTML = `
       <h3 class="product-card__name">${prod.name}</h3>
+      <img src="${prod.image}" alt="${prod.name}" class="product-card__image" />
       <p class="product-card__price">Precio: $${prod.price}</p>
       <button class="product-card__add-btn add-to-cart-btn" data-id="${prod.id}">Agregar al carrito</button>
     `;
