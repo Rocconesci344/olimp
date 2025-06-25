@@ -118,5 +118,13 @@
     "description": "4 noches en lodge de montaña con vista al lago, desayuno artesanal, paseo en catamarán por el Lago Nahuel Huapi y trekking guiado por el Bosque de Arrayanes.",
     "image": "../img/angostura_15.webp",
     "tipo": "nacional"
-  }
+  },
+  {
+  "id": 16,
+  "name": "Safari en Sudáfrica",
+  "price": 295000,
+  "description": "10 días de aventura en Sudáfrica con vuelos desde Buenos Aires, alojamiento en Johannesburgo y reservas naturales, safari en el Parque Kruger, guía en español y traslados completos.",
+  "image": "../img/sudafrica_16.jpg",
+  "tipo": "internacional"
+}
 ]

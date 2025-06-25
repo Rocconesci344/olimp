@@ -1,4 +1,3 @@
-// Variables globales y referencias DOM
 let products = [];
 let users = [];
 
@@ -14,8 +13,8 @@ const profilePanel = document.getElementById("profile-panel");
 
 let currentUser = null;
 let cart = [];
+let currentFilter = "todos"; // 👈 Filtro actual
 
-// Cargar productos y usuarios desde JSON o localStorage
 async function loadJSON() {
   try {
     const [productsResp, usersResp] = await Promise.all([
@@ -38,18 +37,15 @@ async function loadJSON() {
   }
 }
 
-// Guardar usuarios en localStorage
 function saveUsers(users) {
   localStorage.setItem("users", JSON.stringify(users));
 }
 
-// Obtener usuarios guardados
 function getUsers() {
   const usersStr = localStorage.getItem("users");
   return usersStr ? JSON.parse(usersStr) : [];
 }
 
-// Cargar sesión actual
 function loadSession() {
   const savedEmail = sessionStorage.getItem("loggedUserEmail");
   if (savedEmail) {
@@ -58,36 +54,40 @@ function loadSession() {
   return null;
 }
 
-// Guardar sesión
 function saveSession(email) {
   sessionStorage.setItem("loggedUserEmail", email);
 }
 
-// Limpiar sesión
 function clearSession() {
   sessionStorage.removeItem("loggedUserEmail");
 }
 
-// Cargar carrito de usuario
 function loadCartForUser(email) {
   const cartStr = sessionStorage.getItem("cart_" + email);
   return cartStr ? JSON.parse(cartStr) : [];
 }
 
-// Guardar carrito
 function saveCartForUser(email, cart) {
   sessionStorage.setItem("cart_" + email, JSON.stringify(cart));
 }
 
-// Renderizar productos
 function renderProducts() {
   productList.innerHTML = "";
-  products.forEach(prod => {
+
+  let filtered = products;
+  if (currentFilter === "nacional") {
+    filtered = products.filter(p => p.tipo === "nacional");
+  } else if (currentFilter === "internacional") {
+    filtered = products.filter(p => p.tipo === "internacional");
+  }
+
+  filtered.forEach(prod => {
     const div = document.createElement("div");
     div.className = "product-card";
     div.innerHTML = `
       <h3 class="product-card__name">${prod.name}</h3>
       <img src="${prod.image}" alt="${prod.name}" class="product-card__image" />
+      <p class="product-card__tipo">${prod.tipo.toUpperCase()}</p>
       <p class="product-card__price">Precio: $${prod.price}</p>
       <button class="product-card__add-btn add-to-cart-btn" data-id="${prod.id}">Agregar al carrito</button>
     `;
@@ -106,7 +106,6 @@ function renderProducts() {
   });
 }
 
-// Agregar producto al carrito
 function addToCart(productId) {
   const prod = products.find(p => p.id === productId);
   if (!prod) return;
@@ -123,13 +122,11 @@ function addToCart(productId) {
   updateCartCount();
 }
 
-// Renderizar carrito
 function renderCart() {
-  const cartItemsDiv = cartItems;
-  cartItemsDiv.innerHTML = "";
+  cartItems.innerHTML = "";
 
   if (cart.length === 0) {
-    cartItemsDiv.innerHTML = "<p>Tu carrito está vacío.</p>";
+    cartItems.innerHTML = "<p>Tu carrito está vacío.</p>";
     cartTotal.textContent = "0";
     updateCartCount();
     return;
@@ -152,27 +149,26 @@ function renderCart() {
       <span class="cart-item-price">$${(prod.price * item.quantity).toFixed(2)}</span>
     `;
 
-    cartItemsDiv.appendChild(itemDiv);
+    cartItems.appendChild(itemDiv);
   });
 
   updateCartTotal();
   updateCartCount();
 
-  // Botones para ajustar cantidad
   document.querySelectorAll(".qty-btn").forEach(button => {
     button.addEventListener("click", (e) => {
-      const id = parseInt(e.target.getAttribute("data-id"));
-      const action = e.target.getAttribute("data-action");
+      const id = parseInt(e.target.dataset.id);
+      const action = e.target.dataset.action;
 
-      const itemIndex = cart.findIndex(i => i.id === id);
-      if (itemIndex === -1) return;
+      const index = cart.findIndex(i => i.id === id);
+      if (index === -1) return;
 
       if (action === "increase") {
-        cart[itemIndex].quantity++;
+        cart[index].quantity++;
       } else if (action === "decrease") {
-        cart[itemIndex].quantity--;
-        if (cart[itemIndex].quantity <= 0) {
-          cart.splice(itemIndex, 1);
+        cart[index].quantity--;
+        if (cart[index].quantity <= 0) {
+          cart.splice(index, 1);
         }
       }
 
@@ -195,7 +191,6 @@ function updateCartCount() {
   document.getElementById("cart-count").textContent = count;
 }
 
-// Renderizar info de usuario o formulario de login/registro
 function renderUserInfo() {
   if (currentUser) {
     profilePanel.innerHTML = `
@@ -217,11 +212,10 @@ function renderUserInfo() {
   }
 }
 
-// Renderizar formularios de Login y Registro con toggle
 function renderAuthForms() {
   profilePanel.innerHTML = `
     <div class="auth-forms">
-      <form id="login-form" aria-label="Formulario de inicio de sesión">
+      <form id="login-form">
         <h2>Iniciar sesión</h2>
         <label for="login-email">Correo electrónico</label>
         <input type="email" id="login-email" required />
@@ -232,16 +226,16 @@ function renderAuthForms() {
         <p class="auth-error" id="login-error"></p>
       </form>
 
-      <form id="register-form" aria-label="Formulario de registro" style="display:none;">
+      <form id="register-form" style="display:none;">
         <h2>Registrarse</h2>
         <label for="reg-name">Nombre completo</label>
-        <input type="text" id="reg-name" required minlength="3" />
+        <input type="text" id="reg-name" required />
         <label for="reg-email">Correo electrónico</label>
         <input type="email" id="reg-email" required />
         <label for="reg-password">Contraseña</label>
-        <input type="password" id="reg-password" required minlength="6" />
+        <input type="password" id="reg-password" required />
         <label for="reg-password2">Confirmar contraseña</label>
-        <input type="password" id="reg-password2" required minlength="6" />
+        <input type="password" id="reg-password2" required />
         <button type="submit">Crear cuenta</button>
         <p class="auth-toggle" id="show-login">¿Ya tienes cuenta? Inicia sesión</p>
         <p class="auth-error" id="register-error"></p>
@@ -249,7 +243,6 @@ function renderAuthForms() {
     </div>
   `;
 
-  // Toggle entre login y registro
   document.getElementById("show-register").addEventListener("click", () => {
     document.getElementById("login-form").style.display = "none";
     document.getElementById("register-form").style.display = "block";
@@ -260,19 +253,16 @@ function renderAuthForms() {
     document.getElementById("login-form").style.display = "block";
   });
 
-  // Login submit
   document.getElementById("login-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const email = e.target["login-email"].value.trim().toLowerCase();
     const password = e.target["login-password"].value;
 
     const user = users.find(u => u.email === email);
-
     if (!user) {
       showError("login-error", "Usuario no encontrado.");
       return;
     }
-
     if (user.password !== password) {
       showError("login-error", "Contraseña incorrecta.");
       return;
@@ -286,10 +276,8 @@ function renderAuthForms() {
     updateCartCount();
   });
 
-  // Registro submit
   document.getElementById("register-form").addEventListener("submit", (e) => {
     e.preventDefault();
-
     const name = e.target["reg-name"].value.trim();
     const email = e.target["reg-email"].value.trim().toLowerCase();
     const password = e.target["reg-password"].value;
@@ -308,7 +296,6 @@ function renderAuthForms() {
     const newUser = { name, email, password };
     users.push(newUser);
     saveUsers(users);
-
     currentUser = newUser;
     saveSession(email);
     cart = [];
@@ -318,16 +305,16 @@ function renderAuthForms() {
   });
 }
 
-// Mostrar error en formularios
 function showError(id, message) {
   const el = document.getElementById(id);
   if (el) {
     el.textContent = message;
-    setTimeout(() => { el.textContent = ""; }, 3000);
+    setTimeout(() => {
+      el.textContent = "";
+    }, 3000);
   }
 }
 
-// Eventos para abrir y cerrar paneles
 cartBtn.addEventListener("click", () => {
   if (!currentUser) {
     alert("Debes iniciar sesión para ver el carrito.");
@@ -346,19 +333,24 @@ profileBtn.addEventListener("click", () => {
   cartPanel.classList.remove("active");
 });
 
-// Inicialización
 (async function init() {
   await loadJSON();
-
   users = getUsers();
-
   currentUser = loadSession();
   if (currentUser) {
     cart = loadCartForUser(currentUser.email);
   }
-  
+
   renderProducts();
   renderUserInfo();
   renderCart();
   updateCartCount();
+
+  // Agrega eventos de filtro
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentFilter = btn.dataset.filter;
+      renderProducts();
+    });
+  });
 })();
